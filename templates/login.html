@@ -70,11 +70,6 @@
       font-size: 15px;
     }
 
-    .input-box i {
-      color: #ff3e96;
-      margin-right: 5px;
-    }
-
     .input-box input {
       width: 100%;
       padding: 13px 12px;
@@ -99,7 +94,7 @@
       font-size: 15px;
       border-radius: 10px;
       cursor: pointer;
-      margin-top: 30px;
+      margin-top: 25px;
       font-weight: 600;
       transition: 0.3s ease;
     }
@@ -109,13 +104,76 @@
       transform: translateY(-1px);
     }
 
-    .links {
-      border-top: 1px solid #e5e5e5;
-      margin-top: 30px;
-      padding-top: 25px;
+    .social-login {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-top: 25px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .social-btn i {
+      font-size: 18px;
+    }
+
+    .google {
+      color: #db4437;
+    }
+
+    .facebook {
+      color: #1877f2;
+    }
+
+    .social-btn:hover {
+      background: #f8f9ff;
+      transform: translateY(-1px);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #999;
+      position: relative;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .links {
+      border-top: 1px solid #e5e5e5;
+      margin-top: 25px;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       align-items: center;
     }
 
@@ -135,37 +193,13 @@
       color: #ff3e96;
     }
 
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      .login-box {
-        padding: 35px 25px;
-        max-width: 90%;
-      }
-      .login-box .logo p {
-        font-size: 16px;
-      }
-      .btn {
-        font-size: 14px;
-        padding: 12px;
-      }
-    }
-
     @media (max-width: 480px) {
       .login-box {
         padding: 25px 20px;
         border-radius: 15px;
       }
-      .login-box img {
-        width: 90px;
-      }
-      .input-box label {
+      .social-btn {
         font-size: 14px;
-      }
-      .input-box input {
-        font-size: 13px;
-      }
-      .links p {
-        font-size: 13px;
       }
     }
   </style>
@@ -180,17 +214,28 @@
 
     <form>
       <div class="input-box">
-        <label><i class="fas fa-phone"></i>📞 Số điện thoại</label>
+        <label>📞 Số điện thoại</label>
         <input type="text" placeholder="Nhập số điện thoại của bạn" required />
       </div>
 
       <div class="input-box">
-        <label><i class="fas fa-lock"></i>🗝️ Mật khẩu</label>
+        <label>🗝️ Mật khẩu</label>
         <input type="password" placeholder="Nhập mật khẩu" required />
       </div>
 
       <button type="submit" class="btn">Đăng nhập</button>
     </form>
+
+    <div class="divider">hoặc</div>
+
+    <div class="social-login">
+      <button class="social-btn google">
+        <i class="fab fa-google"></i> Đăng nhập bằng Google
+      </button>
+      <button class="social-btn facebook">
+        <i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook
+      </button>
+    </div>
 
     <div class="links">
       <p><a href="#">Quên mật khẩu?</a></p>

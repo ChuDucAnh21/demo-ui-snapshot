@@ -4,127 +4,250 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Đăng ký - Iruka</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     /* === Reset & Base === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-body {
-  background: linear-gradient(135deg, #fbe9ff, #e7e9ff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    body {
+      background: linear-gradient(135deg, #fbe9ff, #e7e9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-/* === Card Container === */
-.container {
-  background: #fff;
-  width: 600px;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
+    /* === Card Container === */
+    .container {
+      background: #fff;
+      width: 100%;
+      max-width: 600px;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
 
-/* Logo */
-.logo img {
-  width: 90px;
-  margin-bottom: 10px;
-}
+    .logo img {
+      width: 90px;
+      margin-bottom: 10px;
+    }
 
-.title {
-  font-size: 22px;
-  color: #4a4ae1;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
+    .title {
+      font-size: 22px;
+      color: #4a4ae1;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
 
-/* Form */
-form {
-  text-align: left;
-}
+    /* === Form === */
+    form {
+      text-align: left;
+    }
 
-label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #555;
-}
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
 
-.input-group {
-  margin-bottom: 20px;
-  position: relative;
-}
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #444;
+      font-size: 15px;
+    }
 
-.input-group input {
-  width: 100%;
-  padding: 10px 40px 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
-}
+    input[type="text"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
 
-.input-group i {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #aaa;
-}
+    input:focus {
+      border-color: #7b5cff;
+      box-shadow: 0 0 0 2px rgba(123, 92, 255, 0.15);
+    }
 
-/* Button */
-button {
-  width: 100%;
-  background: linear-gradient(90deg, #ff4da6, #7b5cff);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    /* === OTP Row === */
+    .otp-row {
+      display: flex;
+      gap: 10px;
+    }
 
-button:hover {
-  opacity: 0.9;
-}
+    .otp-row input {
+      flex: 1;
+    }
 
-/* Links */
-.links {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  font-size: 14px;
-}
+    .otp-row button {
+      white-space: nowrap;
+      background: #5b6cff;
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
 
-.links a {
-  text-decoration: none;
-  color: #7b5cff;
-  transition: 0.3s;
-}
+    .otp-row button:hover {
+      background: #4a59e1;
+    }
 
-.links a:hover {
-  color: #ff4da6;
-}
+    /* === Checkbox === */
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .container {
-    width: 90%;
-    padding: 30px 20px;
-  }
-}
+    .checkbox-group input {
+      margin-top: 3px;
+      cursor: pointer;
+    }
 
+    .checkbox-group a {
+      color: #7b5cff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .checkbox-group a:hover {
+      color: #ff4da6;
+    }
+
+    /* === Button === */
+    button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #ff4da6, #7b5cff);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      opacity: 0.9;
+    }
+
+    /* === Links === */
+    .links {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #7b5cff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      color: #ff4da6;
+    }
+
+    /* === Responsive === */
+
+    /* Mobile nhỏ (max 480px) */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        width: 100%;
+        padding: 25px 18px;
+        border-radius: 12px;
+      }
+
+      .title {
+        font-size: 18px;
+      }
+
+      .otp-row {
+        flex-direction: column;
+      }
+
+      .otp-row button {
+        width: 100%;
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      button[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .container {
+        max-width: 500px;
+        padding: 35px 25px;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+
+      .otp-row button {
+        font-size: 14px;
+      }
+
+      button[type="submit"] {
+        font-size: 15px;
+      }
+    }
+
+    /* Laptop nhỏ (769px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .container {
+        max-width: 550px;
+      }
+      .title {
+        font-size: 22px;
+      }
+    }
+
+    /* Desktop lớn (>=1025px) */
+    @media (min-width: 1025px) {
+      .container {
+        max-width: 600px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="logo">
@@ -140,7 +263,15 @@ button:hover {
 
       <div class="input-group">
         <label for="phone">📞 Số điện thoại</label>
-        <input type="tel" id="phone" placeholder="Nhập số điện thoại" required />
+        <div class="otp-row">
+          <input type="tel" id="phone" placeholder="Nhập số điện thoại" required />
+          <button type="button" id="send-otp">Gửi OTP</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="otp">🔢 Mã OTP</label>
+        <input type="number" id="otp" placeholder="Nhập mã OTP nhận được" required />
       </div>
 
       <div class="input-group">
@@ -153,13 +284,32 @@ button:hover {
         <input type="password" id="confirm" placeholder="Nhập lại mật khẩu" required />
       </div>
 
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" required />
+        <label for="terms">
+          Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của Iruka.
+        </label>
+      </div>
+
       <button type="submit">Đăng ký</button>
     </form>
 
     <div class="links">
-      <a href="login.html">Đã có tài khoản? Đăng nhập</a>
-      <!-- <a href="forgot.html">Quên mật khẩu?</a> -->
+      <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
     </div>
   </div>
+
+  <script>
+    const sendOtpBtn = document.getElementById("send-otp");
+    sendOtpBtn.addEventListener("click", () => {
+      sendOtpBtn.disabled = true;
+      sendOtpBtn.textContent = "Đang gửi...";
+      setTimeout(() => {
+        alert("✅ OTP đã được gửi đến số điện thoại của bạn!");
+        sendOtpBtn.textContent = "Gửi lại OTP";
+        sendOtpBtn.disabled = false;
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
