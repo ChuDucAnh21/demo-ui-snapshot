@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lộ trình học cho bé</title>
+    <style>
+        /* --- Reset & Thiết lập Cơ bản --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f7ff; /* Nền tím rất nhạt */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* --- Card Chung --- */
+        .card-container {
+            background-color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Header --- */
+        .logo {
+            /* width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ee9ae5 0%, #5961f9 100%); */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            /* box-shadow: 0 8px 20px rgba(184, 123, 241, 0.4); */
+            margin-bottom: 1rem;
+        }
+        .logo svg { width: 44px; height: 44px; color: white; }
+        .card-title { font-size: 1.75rem; font-weight: 700; color: #1f2937; }
+        .card-subtitle { font-size: 1rem; color: #6b7280; margin-top: 0.5rem; max-width: 450px; margin-left: auto; margin-right: auto; }
+        
+        /* --- Lộ trình học --- */
+        .roadmap-container { 
+            margin-top: 2.5rem; 
+            text-align: left;
+        }
+        .roadmap-section { 
+            border: 1px solid #e5e7eb; 
+            border-radius: 16px; 
+            margin-bottom: 1rem; 
+            overflow: hidden; 
+        }
+        .section-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 1.5rem; 
+            cursor: pointer; 
+            background-color: #f9fafb; 
+        }
+        .section-header:hover { background-color: #f3f4f6; }
+        .section-title-group { display: flex; align-items: center; gap: 1rem; }
+        .section-icon { font-size: 1.5rem; }
+        .section-title { font-size: 1.1rem; font-weight: 600; color: #1f2937; }
+        .section-arrow { font-size: 1.5rem; color: #9ca3af; transition: transform 0.3s ease; }
+        .roadmap-section.active .section-arrow { transform: rotate(90deg); }
+        .section-content { 
+            display: none;
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem; 
+            border-top: 1px solid #e5e7eb; 
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lesson-item { 
+            display: flex; 
+            justify-content: space-between; /* Đẩy các phần tử ra hai bên */
+            align-items: center; 
+            padding: 1rem 0; 
+            border-bottom: 1px solid #f3f4f6; 
+        }
+        .lesson-item:last-child { border-bottom: none; }
+        
+        .lesson-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lesson-icon { font-size: 1.25rem; }
+        .lesson-title { font-weight: 500; color: #374151; }
+
+        .lesson-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lesson-duration { 
+            font-size: 0.9rem; 
+            color: #6b7280; 
+            font-weight: 500; 
+            background-color: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+        
+        /* Nút Chơi Mới */
+        .play-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem; /* Thêm khoảng cách giữa icon và chữ */
+            padding: 0.5rem 1rem; /* Thêm padding cho nút */
+            border: none;
+            border-radius: 99px; /* Bo tròn thành hình viên thuốc */
+            cursor: pointer;
+            background: linear-gradient(135deg, #f472b6, #a855f7);
+            color: white;
+            box-shadow: 0 4px 10px rgba(192, 132, 252, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(192, 132, 252, 0.4);
+        }
+
+        .play-button svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Footer Buttons */
+        .form-navigation { display: flex; gap: 1.3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+        .nav-button { flex: 1; padding: 1rem; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .btn-secondary { background-color: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+        .btn-secondary:hover { background-color: #e5e7eb; }
+        .btn-primary { background: linear-gradient(135deg, #f472b6, #a855f7); color: white; box-shadow: 0 6px 15px rgba(192, 132, 252, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(192, 132, 252, 0.5); }
+
+        /* --- Responsive --- */
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .card-container { padding: 1.5rem; }
+            .card-title { font-size: 1.5rem; }
+            .card-subtitle { font-size: 0.85rem; }
+            .section-header, .section-content { padding: 1rem; }
+            .lesson-actions { gap: 0.5rem; }
+            /* .lesson-duration { display: none; } Ẩn thời gian trên mobile để tiết kiệm không gian */
+        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8f7ff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+/* Toàn bộ khung chính full màn hình */
+.card-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Căn giữa logo + tiêu đề */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo img {
+    width: 80px;
+}
+
+/* Danh sách roadmap */
+.roadmap-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Các section học */
+.roadmap-section {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    background-color: #f9fafb;
+}
+
+.section-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.section-arrow {
+    transition: transform 0.3s ease;
+}
+
+.roadmap-section.active .section-arrow {
+    transform: rotate(90deg);
+}
+
+.section-content {
+    display: none;
+    padding: 1rem 1.25rem;
+}
+
+.lesson-item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.lesson-item:last-child {
+    border-bottom: none;
+}
+
+.lesson-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 240px;
+}
+
+.lesson-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lesson-duration {
+    font-size: 0.85rem;
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+/* Nút chơi */
+.play-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, #f472b6, #a855f7);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(192, 132, 252, 0.3);
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer buttons */
+.form-navigation {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-button {
+    flex: 1;
+    max-width: 200px;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-secondary {
+    background: #f3f4f6;
+    color: #333;
+    border: 1px solid #e5e7eb;
+    min-width: 180px;
+    width: full;}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f472b6, #a855f7);
+    color: white;
+    min-width: 180px;
+    border: none;
+    flex: 1;
+    width: full;
+
+
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .card-container {
+        padding: 1rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+    .section-title {
+        font-size: 0.95rem;
+    }
+    /* .lesson-duration {
+        /* display: none; */
+    /* } */ */
+    .lesson-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .lesson-actions {
+        margin-top: 0.5rem;
+        justify-content: end;
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <header class="card-header">
+             <div class="logo">
+                <img style="width: 100px;" src="../public/Logo.webp" alt="">
+            </div>
+
+            <h1 class="card-title">Lộ trình học cho bé</h1>
+            <p class="card-subtitle">Dựa trên kết quả khảo sát, đây là lộ trình được cá nhân hóa cho bé nhà mình.</p>
+        </header>
+
+        <main id="roadmap-container" class="roadmap-container">
+            <!-- Lộ trình sẽ được JS chèn vào đây -->
+        </main>
+
+        <footer class="form-navigation">
+            <button class="nav-button btn-secondary" onclick="alert('Quay lại khảo sát!')">Quay lại</button>
+            <button class="nav-button btn-primary" onclick="alert('Bắt đầu học!')">Bắt đầu học</button>
+        </footer>
+    </div>
+
+    <!-- --- JavaScript xử lý Logic --- -->
+    <script>
+        // Dữ liệu mẫu cho Lộ trình học
+        const roadmapData = [
+            {
+                icon: '1️⃣',
+                title: 'Phần 1: Làm quen với số đếm',
+                lessons: [
+                    { icon: '🍎', title: 'Đếm táo', duration: '5 phút' },
+                    { icon: '🚗', title: 'Đếm xe ô tô', duration: '5 phút' },
+                    { icon: '🧸', title: 'Trò chơi tìm số', duration: '10 phút' }
+                ]
+            },
+            {
+                icon: '➕',
+                title: 'Phần 2: Phép cộng đơn giản',
+                lessons: [
+                    { icon: '🖐️', title: 'Cộng bằng ngón tay', duration: '10 phút' },
+                    { icon: '🎲', title: 'Trò chơi xúc xắc', duration: '15 phút' }
+                ]
+            },
+            {
+                icon: '🟡',
+                title: 'Phần 3: Nhận biết hình khối',
+                lessons: [
+                    { icon: '🏠', title: 'Tìm hình tròn trong nhà', duration: '5 phút' },
+                    { icon: '🧩', title: 'Xếp hình khối', duration: '15 phút' }
+                ]
+            }
+        ];
+        
+        const roadmapContainer = document.getElementById('roadmap-container');
+
+        function loadRoadmap() {
+            roadmapContainer.innerHTML = ''; // Xóa lộ trình cũ
+            roadmapData.forEach(section => {
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'roadmap-section';
+
+                let lessonsHtml = '';
+                section.lessons.forEach(lesson => {
+                    lessonsHtml += `
+                        <div class="lesson-item">
+                            <div class="lesson-info">
+                                <span class="lesson-icon">${lesson.icon}</span>
+                                <span class="lesson-title">${lesson.title}</span>
+                            </div>
+                            <div class="lesson-actions">
+                                <span class="lesson-duration">${lesson.duration}</span>
+                                <button class="play-button" onclick="alert('Chơi game: ${lesson.title}')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                                    </svg>
+                                    <span>Chơi</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                sectionEl.innerHTML = `
+                    <div class="section-header">
+                        <div class="section-title-group">
+                            <span class="section-icon">${section.icon}</span>
+                            <span class="section-title">${section.title}</span>
+                        </div>
+                        <span class="section-arrow">›</span>
+                    </div>
+                    <div class="section-content">
+                        ${lessonsHtml}
+                    </div>
+                `;
+                roadmapContainer.appendChild(sectionEl);
+            });
+
+            // Gắn sự kiện click cho các phần (accordion)
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const section = header.parentElement;
+                    const content = header.nextElementSibling;
+                    const wasActive = section.classList.contains('active');
+
+                    // Đóng tất cả các mục khác
+                    document.querySelectorAll('.roadmap-section').forEach(otherSection => {
+                        otherSection.classList.remove('active');
+                        otherSection.querySelector('.section-content').style.display = 'none';
+                    });
+                    
+                    // Mở mục hiện tại nếu nó chưa được mở
+                    if (!wasActive) {
+                        section.classList.add('active');
+                        content.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        // Tải lộ trình học ngay khi trang được mở
+        window.onload = loadRoadmap;
+    </script>
+</body>
+</html>

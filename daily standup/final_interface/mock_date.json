@@ -1,0 +1,190 @@
+{
+  "parent": {
+    "full_name": "Chu Công Đức Anh",
+    "phone": "0912345678",
+    "password": "123456"
+  },
+
+  "child": {
+    "name": "Bé Na",
+    "birth_date": "2020-04-15",
+    "gender": "female"
+  },
+
+  "assessment": {  
+    "id": "AS001",
+    "title": "Đánh giá toán học nền tảng và lộ trình học phù hợp cho bé",
+    "sections": [
+      {
+        "section_id": "1",
+        "section_title": "Trình độ Toán học Nền tảng",
+        "type": "score",
+        "description": "Đánh giá khả năng đếm, nhận biết số, hình và các khái niệm toán học cơ bản",
+        "questions": [
+          {
+            "id": "Q1",
+            "content": "Khi mẹ đưa cho bé 1 món đồ và nói “một”, sau đó đưa nhiều món và nói “nhiều”, bé có tỏ ra phân biệt được hai khái niệm này không?",
+            "options": [
+              { "id": "A1", "text": "Bé có", "score": 10 },
+              { "id": "A2", "text": "Thi thoảng", "score": 5 },
+              { "id": "A3", "text": "Bé chưa", "score": 5 }
+            ]
+          },
+          {
+            "id": "Q2",
+            "content": "Khi đi giày, bé có hiểu rằng mỗi bàn chân cần một chiếc giày không? Hoặc khi ăn, bé có biết mỗi người cần một cái bát không?",
+            "options": [
+              { "id": "A1", "text": "Bé có", "score": 10 },
+              { "id": "A2", "text": "Thi thoảng", "score": 5 },
+              { "id": "A3", "text": "Bé chưa", "score": 5 }
+            ]
+          }
+        ]
+      },
+
+      {
+        "section_id": "2",
+        "section_title": "Thiên hướng Tư duy & Cách tiếp cận",
+        "type": "tag",
+        "description": "Đánh giá cách bé tư duy và giải quyết vấn đề toán học.",
+        "questions": [
+          {
+            "id": "Q3",
+            "content": "Khi có món đồ chơi mới, bé thường:",
+            "options": [
+              { "id": "A1", "text": "Nhìn và xoay ngắm kỹ", "tag": "visual" },
+              { "id": "A2", "text": "Lắc, nghe hoặc nghe mẹ nói", "tag": "auditory" },
+              { "id": "A3", "text": "Cầm, sờ, thử bằng tay chân", "tag": "kinesthetic" }
+            ]
+          },
+          {
+            "id": "Q4",
+            "content": "Bé thích nhất kiểu chơi nào?",
+            "options": [
+              { "id": "A1", "text": "Bé xếp đồ vật, sắp hàng", "tag": "logic" },
+              { "id": "A2", "text": "Bé tưởng tượng kể chuyện ", "tag": "creative" },
+              { "id": "A3", "text": "Chạy nhảy, vận động ", "tag": "physical" }
+            ]
+          }
+        ]
+      },
+
+      {
+        "section_id": "3",
+        "section_title": "Kỹ năng Hỗ trợ Tổng quát",
+        "type": "score",
+        "description": "Đánh giá các kỹ năng nền tảng giúp bé học toán tốt hơn",
+        "questions": [
+          {
+            "id": "Q5",
+            "content": "Khi mẹ đọc truyện ngắn, bé có ngồi nghe hết không?",
+            "options": [
+              { "id": "A1", "text": "Bé có", "score": 10 },
+              { "id": "A2", "text": "Thi thoảng", "score": 5 },
+              { "id": "A3", "text": "Bé chưa", "score": 5 }
+            ]
+          },
+          {
+            "id": "Q6",
+            "content": "Khi mẹ nói 'Con lấy quả bóng lại cho mẹ', bé có làm theo không?",
+            "options": [
+              { "id": "A1", "text": "Bé có", "score": 10 },
+              { "id": "A2", "text": "Thi thoảng", "score": 5 },
+              { "id": "A3", "text": "Bé chưa", "score": 5 }
+            ]
+          }
+        ]
+      },
+
+      {
+        "section_id": "4",
+        "section_title": "Sở thích, Tâm lý của Mẹ khi dạy con",
+        "type": "tag",
+        "description": "Đánh giá phong cách và tâm lý của mẹ trong việc dạy toán cho bé",
+        "questions": [
+          {
+            "id": "Q7",
+            "content": "Bé thích nhất điều gì?",
+            "options": [
+              { "id": "A1", "text": "Động vật", "tag": "animals" },
+              { "id": "A2", "text": "Xe cộ", "tag": "vehicles" },
+              { "id": "A3", "text": "Đồ chơi", "tag": "toys" },
+              { "id": "A3", "text": "Âm nhạc ", "tag": "music" },
+              { "id": "A3", "text": "Trái cây", "tag": "fruits" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+ "result": {
+    "profile": {
+            "name": "string",
+            "age": "string",
+            "gender": "string",
+            "description": "string",
+            "avatar_icon": "🐘"
+    },
+    "math_score": {
+        "score": 8,
+        "title": "Trình độ Toán học của bé đã hình thành",
+        "sub": "Bé đang phát triển tốt, cần rèn luyện lại nhiều lần cho bé nha mẹ."
+    },
+    "logic_score": {
+        "score": 7.5,
+        "title": "Kỹ năng hỗ trợ của bé đang nảy mầm",
+        "sub": "Bé có thể tập trung nhưng cần mẹ động viên bé khi gặp khó."
+    },
+    "tag_summary": [
+        {
+            "id": "1",
+            "tag":"Bé học tốt qua việc suy luận"
+        },
+        {
+            "id": "2",
+            "tag":"Bé kiên trì khi gặp khó"
+        },
+        {
+            "id": "3",
+            "tag": "Bé thích học qua hình ảnh động vật"
+        },
+        {
+            "id": "4",
+            "tag":"Bé học tốt vào buổi chiều tối"
+        }
+    ],
+    "advice_section": {
+        "text_main":  "Mẹ ơi, toán học với bé chu cong duc anh không phải là con số, mà là niềm vui khi được khám phá cùng mẹ. Con học tốt nhất khi được chạm, được thử, được tưởng tượng. Mỗi ngày chỉ cần 10 phút, mẹ cùng con chơi – nói – đếm, là con đã gieo mầm tư duy toán học rồi 💙.",
+        "advice_list": [
+            {
+                "id": "1",
+                "content": "Con đang làm quen với ghép 1–1 và mẫu lặp đơn giản, Iruka sẽ bắt đầu bằng đồ thật có chạm tay.",
+                "background_color": "#dbeafe"
+            },
+            {
+                "id": "2",
+                "content": "Con học qua vận động, mẹ để con tự cầm – sờ – xếp; mình nói ngắn, dễ bắt chước.",
+                "background_color": "#ede9fe"
+            },
+            {
+                "id": "3",
+                "content": "Khi con xin giúp, mẹ gợi ý một bước nhỏ, khen ngay khi con thử lại.",
+                "background_color": "#fae8ff"
+            },
+            {
+                "id": "4",
+                "content": "Mỗi trò 1–2 phút, đổi nhanh khi con bắt đầu chán để giữ hứng thú.",
+                "background_color": "#dcfce7"
+            },
+            {
+                "id": "5",
+                "content": "Chủ đề động vật là “chìa khoá” – tận dụng sticker và mô hình thú.",
+                "background_color": "#fef3c7"
+            }
+        ]
+    }
+
+  }
+
+}

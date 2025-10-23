@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông tin về bé - SnapShort</title>
+  <style>
+    /* ====== Reset cơ bản ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f8f7ff;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .card-container {
+      background-color: #fff;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ====== Header ====== */
+    .site-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .site-logo img {
+      width: 120px;
+      height: auto;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #d946ef;
+    }
+
+    .card-subtitle {
+      font-size: 1.1rem;
+      color: #6b21a8;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* ====== Form ====== */
+    .info-form {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="date"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #fff;
+      color: #111827;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+    }
+
+    .input-group input:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+      outline: none;
+    }
+
+    /* ====== Radio buttons ====== */
+    .gender-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .gender-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .gender-group input[type="radio"] {
+      accent-color: #a855f7;
+    }
+
+    /* ====== Buttons ====== */
+    .form-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .nav-button {
+      flex: 1;
+      min-width: 150px;
+      padding: 1rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary {
+      background-color: #f3f4f6;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f472b6, #a855f7);
+      color: white;
+      box-shadow: 0 6px 15px rgba(192, 132, 252, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(192, 132, 252, 0.5);
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      .card-container { padding: 1.5rem; }
+      .card-title { font-size: 1.5rem; }
+      .card-subtitle { font-size: 1rem; }
+      .nav-button { font-size: 0.9rem; padding: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <header class="card-header info-form-header">
+      <div class="site-logo">
+        <img src="../public/Chu_IRUKA-01-01.webp" alt="Logo Iruka">
+      </div>
+      <h1 class="card-title">Thông tin về bé</h1>
+      <p class="card-subtitle">Giúp chúng tôi hiểu về bé để đưa ra lộ trình học phù hợp</p>
+    </header>
+
+    <main class="info-form">
+      <div class="input-group">
+        <label for="baby-name">Tên của bé:</label>
+        <input type="text" id="baby-name" placeholder="Ví dụ: Nam, Hoa..." />
+      </div>
+
+      <div class="input-group">
+        <label for="baby-age">Ngày sinh của bé:</label>
+        <input type="date" id="baby-age" />
+      </div>
+
+      <div class="input-group">
+        <label>Giới tính:</label>
+        <div class="gender-group">
+          <label><input type="radio" name="gender" value="male" checked /> Nam</label>
+          <label><input type="radio" name="gender" value="female" /> Nữ</label>
+        </div>
+      </div>
+    </main>
+
+    <footer class="form-navigation">
+      <button class="nav-button btn-secondary">Quay lại</button>
+      <button class="nav-button btn-primary">Tiếp tục</button>
+    </footer>
+  </div>
+</body>
+</html>

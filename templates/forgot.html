@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quên mật khẩu - Iruka</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* === Reset & Base === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fbe9ff, #e7e9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* === Card Container === */
+    .container {
+      background: #fff;
+      width: 600px;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo img {
+      width: 90px;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 22px;
+      color: #4a4ae1;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    /* Form */
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .input-group i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+
+    /* Nút gửi mã OTP */
+    .otp-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .otp-group input {
+      flex: 1;
+    }
+
+    .otp-group button {
+      background: linear-gradient(90deg, #ff85b9, #8b6fff);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+
+    .otp-group button:hover {
+      opacity: 0.9;
+    }
+
+    /* Button chính */
+    button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #ff4da6, #7b5cff);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 300;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      opacity: 0.9;
+    }
+
+    /* Links */
+    .links {
+      display: flex;
+      justify-content: space-between;
+      gap: 3;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #7b5cff;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      color: #ff4da6;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container {
+        width: 90%;
+        padding: 30px 20px;
+      }
+
+      .otp-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .otp-group button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="../public/Chu_IRUKA-01-01.webp" alt="Iruka logo" />
+    </div>
+    <h2 class="title">Quên mật khẩu?</h2>
+    <p style="margin-bottom: 20px; color: #666; font-size: 14px;">
+      Nhập số điện thoại để nhận và xác minh mã đặt lại mật khẩu
+    </p>
+
+    <form>
+      <div class="input-group">
+        <label for="phone">Số điện thoại</label>
+        <input type="tel" id="phone" placeholder="Nhập số điện thoại" required />
+      </div>
+
+      <div class="input-group">
+        <label for="otp">Mã xác nhận</label>
+        <div class="otp-group">
+          <input type="text" id="otp" placeholder="Nhập mã 6 chữ số" maxlength="6" required />
+          <button type="button">Gửi mã</button>
+        </div>
+      </div>
+
+      <button type="submit">Xác nhận và đăng nhập lại</button>
+    </form>
+
+    <div class="links">
+      <a href="login.html">← Đăng nhập</a>
+      <a href="register.html">Đăng ký mới</a>
+    </div>
+  </div>
+</body>
+</html>

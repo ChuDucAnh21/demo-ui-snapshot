@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bảng Điều Khiển - chu cong duc anh</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+<style>
+html, body {
+    width: 100%;
+    min-height: 100%;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+    color: #1f2937;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Cấu trúc chính === */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 2rem 3rem 2rem;
+    background-color: white;
+    /* background: linear-gradient(135deg, #aba0e7 0%, #b48ce9 100%); */
+}
+
+/* === Tiêu đề trang === */
+.page-title {
+    text-align: center;
+    margin: 0rem auto 0.5rem auto;
+}
+.page-title-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8b5cf6;
+    line-height: 1.2;
+}
+.page-title-sub {
+    font-size: 1.1rem;
+    color: #64748b;
+}
+
+/* === Header === */
+.profile-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5rem 2rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(11, 9, 16, 0.05);
+}
+.profile-icon { font-size: 2.5rem; margin-right: 1rem; }
+.profile-name { font-size: 1.6rem; font-weight: 700; color: #7c3aed;  margin-bottom: 0;}
+.profile-subtitle { font-size: 1rem; color: #6b7280; margin-top: 0;}
+.profile-toggles { display: flex; gap: 0.5rem; }
+.toggle-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.4rem 1.2rem;
+    border-radius: 999px;
+    border: 2px solid #ddd6fe;
+    background: #f9fafb;
+    color: #3730a3;
+    transition: 0.2s;
+}
+.toggle-btn.active {
+    background: #8b5cf6;
+    color: #fff;
+    border-color: #8b5cf6;
+}
+
+/* === Dashboard Card (2 cây + tags) === */
+.dashboard-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 2rem;
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(139,92,246,0.05);
+}
+
+.tree-section { text-align: center; }
+.tree-title { font-size: 1.3rem; font-weight: 700; color: #2563eb; margin-top: 0.8rem; margin-bottom: 0;}
+.color-yellow { color: #f59e0b; }
+.tree-subtitle { font-size: 1rem; color: #64748b; min-height: 42px; margin: 0.4rem 0 0.0rem 0; }
+
+.progress-block { width: 70%; margin: 0.6rem auto 0 auto; }
+.progress-header { margin-bottom: 0.6rem; display: flex; justify-content: start; font-size: 1.1rem; color: #374151; }
+.progress-value { font-weight: 600; }
+.badge { padding: 0.15rem 0.5rem; border-radius: 99px; font-size: 0.9rem; font-weight: 600; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+.badge-yellow { background: #fef3c7; color: #b45309; }
+.progress-bar-bg {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 99px;
+    overflow: hidden;
+}
+.progress-bar-fill { height: 100%; border-radius: 99px; }
+.bar-blue { background-color: #3b82f6; }
+.bar-yellow { background-color: #f59e0b; }
+
+/* === Tags & insights === */
+.insights-title {
+    grid-column: 1 / -1;
+    font-size: 1.3rem;
+    color: #2563eb;
+    font-weight: 700;
+    margin: 1.2rem 0 0.3rem 0;
+    text-align: center;
+}
+.dashboard-tags {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    border-top: 1px solid #ede9fe;
+ 
+    padding-top: 1rem;
+}
+.chip-tag {
+    border: 2px solid #f5f3ff;
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #f3f4f6;
+    color: #5b21b6;
+}
+
+/* === Advice Section === */
+.advice-card {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 1.8rem;
+}
+.advice-title { font-size: 1.6rem; font-weight: bold; color: #db2777; text-align: left; margin-bottom: 1.2rem; }
+.advice-list { display: grid; gap: 1rem; }
+.advice-row {
+    padding: 0.8rem 1.4rem;
+    border-radius: 12px;
+    display: flex;
+    align-items:center;
+    gap: 0.8rem;
+    background: #faf5ff;
+    border-left: 4px solid #8b5cf6;
+    box-shadow: 0 2px 8px rgba(139,92,246,.06);
+}
+.advice-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+.advice-row-title { font-size: 1.2rem; font-weight: 700; color: #7e22ce; margin: 10px 0 0 0;}
+.advice-row-text { font-size: 1rem; color: #374151; line-height: 1.5; margin-top: 0.25rem; }
+
+/* === Footer === */
+.footer-action { text-align: center; margin-top: -2rem; }
+.btn-primary.btn-large {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(90deg,#a78bfa 0%,#d946ef 100%);
+    color: #fff;
+    box-shadow: 0 3px 12px rgba(217,70,239,.12);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-bottom: 120px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-primary.btn-large:hover {
+    background: linear-gradient(90deg,#a78bfa 0%,#c026d3 100%);
+}
+
+/* === Responsive === */
+.advice-toggle{
+    display: none;
+}
+@media (max-width: 1024px) {
+    .page-title-text { font-size: 1.8rem; }
+    .page-title-sub { font-size: 1rem; }
+    .dashboard-card { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+}
+@media (max-width: 768px) {
+    .profile-header { flex-direction: column; align-items: flex-start; }
+    .tree-title { font-size: 1.1rem; }
+    .tree-subtitle { font-size: 0.95rem; }
+    .advice-title { font-size: 1.3rem; text-align: center; }
+}
+.logo {
+    margin:20px auto 0 auto;
+}
+.logo img {
+  width: 100px;
+  /* margin-bottom: 10px; */
+}
+/* --- Hiệu ứng ẩn hiện sub text khi mobile --- */
+.advice-toggle {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+.advice-toggle.open {
+  transform: rotate(180deg);
+}
+
+.advice-row-text {
+  max-height: none;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 468px) {
+  .advice-row-text {
+    max-height: 0;
+    opacity: 0;
+  }
+  .advice-toggle{
+    display: block;
+  }
+  .advice-row.open .advice-row-text {
+    max-height: 500px; /* tùy chiều cao nội dung */
+    opacity: 1;
+  }
+  .advice-row-title{
+    font-weight: 500;
+  }
+}
+body {
+  background: #f7f5ff;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+}
+.card {
+  background: #fff8ff;
+  border-radius: 16px;
+  /* max-width: 900px; */
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+}
+.card-advice{
+    background: #fff8ff;
+  border-radius: 16px;
+  /* max-width: 900px; */
+  /* width: 100%; */
+  box-shadow: 0 4px 20px rgba(8, 7, 11, 0.1);
+  padding: 30px 40px;
+}
+
+/* --- Tiêu đề --- */
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #b31fa0;
+  margin-bottom: 20px;
+}
+.card-title i {
+  background: #e6c9f8;
+  color: #a020f0;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+/* --- Hộp lời nhắn chính --- */
+.main-advice {
+  position: relative;
+  background: #f0f7ff;
+  border-radius: 12px;
+  padding: 20px 25px;
+  font-style: italic;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+.main-advice strong {
+  color: #7c3aed;
+  font-weight: 600;
+}
+.main-advice .heart-bg {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: rgba(147, 112, 219, 0.15);
+}
+
+/* --- Các dòng gợi ý --- */
+.tip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #444;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.tip-item:hover {
+  transform: translateY(-2px);
+}
+.tip-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.tip-blue { background: #3b82f6; }
+.tip-purple { background: #8b5cf6; }
+.tip-pink { background: #ec4899; }
+.tip-green { background: #10b981; }
+.tip-orange { background: #f59e0b; }
+
+/* --- Nút --- */
+.btn-primary {
+  margin: 30px auto 0 auto;
+  display: block;
+  background: linear-gradient(90deg,#a78bfa 0%,#d946ef 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 12px rgba(217,70,239,.15);
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg,#a78bfa 0%,#c026d3 100%);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .card { padding: 24px 20px; }
+  .main-advice { font-size: 0.9rem; }
+  .tip-item { font-size: 0.9rem; }
+  .btn-primary { width: 100%; }
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".advice-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const row = btn.closest(".advice-row");
+      const isOpen = row.classList.toggle("open");
+      btn.classList.toggle("open");
+
+    });
+  });
+});
+</script>
+</head>
+
+
+<body>
+    <div class="main-container">
+        <div class="logo">
+      <img src="../public/Logo.webp" alt="Iruka logo" />
+    </div>
+        <div class="page-title">
+            <div class="page-title-text">Nhận xét của chuyên gia (Iruka) — Tổng quan cho mẹ</div>
+            <div class="page-title-sub">Dựa trên trình độ, kĩ năng, thiên hướng tư duy, cách tiếp cận và sở thích/tâm lý của mẹ</div>
+        </div>
+
+        <header class="profile-header">
+            <div style="display: flex; align-items: center;" class="profile-info">
+                <span class="profile-icon">🐘</span>
+                <div>
+                    <h1 class="profile-name">chu cong duc anh</h1>
+                    <p class="profile-subtitle">Bé 4 tuổi · đang khám phá thế giới toán theo cách của mình!</p>
+                </div>
+            </div>
+            <div class="profile-toggles">
+                <button class="toggle-btn active">Giới tính : Nam (4 tuổi)</button>
+            </div>
+        </header>
+
+        <section class="dashboard-card card">
+            <div class="tree-section">
+                <img style="width: 94px; margin-top:1rem;" src="../public/tree3.png" alt="">
+                <h2 class="tree-title">Trình độ Toán học của bé đã hình thành</h2>
+                <p class="tree-subtitle">Bé đang phát triển tốt, cần rèn luyện lại nhiều lần cho bé nha mẹ.</p>
+                <div class="progress-block">
+                    <div class="progress-header">
+                        <span class="progress-value">8/10 <span class="badge badge-blue">Tốt</span></span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill bar-blue" style="width: 66.7%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tree-section">
+                <img style="width: 104px; margin-top:1rem;" src="../public/tree2.png" alt="">
+                <h2 class="tree-title color-yellow">Kỹ năng hỗ trợ của bé đang nảy mầm</h2>
+                <p class="tree-subtitle">Bé có thể tập trung nhưng cần mẹ động viên bé khi gặp khó.</p>
+                <div class="progress-block">
+                    <div class="progress-header">
+                        <span class="progress-value">7.5/10 <span class="badge badge-yellow">Khá</span></span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill bar-yellow" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="insights-title">
+                <span class="insights-icon">🐬</span>
+                Iruka gợi ý về cách học phù hợp với bé
+            </h4>
+            <div class="dashboard-tags">
+                <span class="chip-tag">🧠 Bé học tốt qua việc suy luận</span>
+                <span class="chip-tag">🤔 Bé kiên trì khi gặp khó</span>
+                <span class="chip-tag">🦓 Bé thích học qua hình ảnh động vật</span>
+                <span class="chip-tag">🌇 Bé học tốt vào buổi chiều tối</span>
+            </div>
+        </section>
+
+   <section class="card-advice">
+    <h2 class="card-title">
+      <i class="fa-solid fa-heart"></i>
+      Lời khuyên cá nhân hoá cho mẹ
+    </h2>
+
+    <div class="main-advice">
+      “Mẹ ơi, toán học với bé <strong>chu cong duc anh</strong> không phải là con số, mà là niềm vui khi được khám phá cùng mẹ. 
+      Con học tốt nhất khi được chạm, được thử, được tưởng tượng. 
+      Mỗi ngày chỉ cần 10 phút, mẹ cùng con chơi – nói – đếm, là con đã gieo mầm tư duy toán học rồi 💙.”
+      <span class="heart-bg"><i class="fa-solid fa-heart"></i></span>
+    </div>
+
+    <div class="tip-list">
+      <div style="background-color: #8cdcf35d;" class="tip-item"><span class="tip-icon tip-blue"><i class="fa-solid fa-check"></i></span>Con đang làm quen với ghép 1–1 và mẫu lặp đơn giản, Iruka sẽ bắt đầu bằng đồ thật có chạm tay.</div>
+      <div style="background-color: #c49bf05d;"  class="tip-item"><span class="tip-icon tip-purple"><i class="fa-solid fa-check"></i></span>Con học qua vận động, mẹ để con tự cầm – sờ – xếp; mình nói ngắn, dễ bắt chước.</div>
+      <div style="background-color: #e9b7e35d;"  class="tip-item"><span class="tip-icon tip-pink"><i class="fa-solid fa-check"></i></span>Khi con xin giúp, mẹ gợi ý một bước nhỏ, khen ngay khi con thử lại.</div>
+      <div style="background-color: #96ecad5d;"  class="tip-item"><span class="tip-icon tip-green"><i class="fa-solid fa-check"></i></span>Mỗi trò 1–2 phút, đổi nhanh khi con bắt đầu chán để giữ hứng thú.</div>
+      <div style="background-color: #f1ddb05d;"  class="tip-item"><span class="tip-icon tip-orange"><i class="fa-solid fa-check"></i></span>Chủ đề động vật là “chìa khoá” – tận dụng sticker và mô hình thú.</div>
+    </div>
+
+    <!-- <button class="btn-primary">Xem lộ trình học toán cho bé</button> -->
+  </section>
+
+
+        <footer class="footer-action">
+            <button class="btn-primary btn-large">Xem lộ trình học toán cho bé</button>
+        </footer>
+    </div>
+</body>
+</html>

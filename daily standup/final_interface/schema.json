@@ -1,0 +1,86 @@
+{
+  "parent": {
+    "full_name": "string",
+    "phone": "string",
+    "password": "string"
+  },
+
+  "child": {
+    "name": "string",
+    "birth_date": "string (yyyy-mm-dd)",
+    "gender": "string (male/female)"
+  },
+
+  "assessment": {
+    "id": "string",
+    "title": "string",
+    "sections": [
+      {
+        "section_id": "string",
+        "section_title": "string",
+        "type": "score", 
+        "description": "string",
+        "questions": [
+          {
+            "id": "string",
+            "content": "string",
+            "options": [
+              {"id": "string", "text": "string", "score": "number"}
+            ]
+          }
+        ]
+      },
+
+      {
+        "section_id": "string",
+        "section_title": "string",
+        "type": "tag",
+        "description": "string",
+        "questions": [
+           {
+              "id": "string",
+              "content": "string",
+              "options": [
+                { "id": "string", "text": "string","tag": "string" }
+              ]
+           }
+        ]
+        }
+      
+    ]
+  },
+
+  "result": {
+    "profile": {
+        "name": "chu cong duc anh",
+        "age": 4,
+        "gender": "Nam",
+        "description": "Bé 4 tuổi · đang khám phá thế giới toán theo cách của mình!",
+        "avatar_icon": "🐘"
+    },
+    "math_score": {
+        "id":"string",
+        "score": "number",
+        "title": "string",
+        "sub": "string"
+    },
+    "logic_score": {
+        "id":"string",
+        "score": "number",
+        "title": "string",
+        "sub": "string"
+    },
+    "tag_summary": [{"id":"string", "content":"string"}],
+    "advice_section": {
+        "text_main": "string",
+        "advice_list": [
+            {
+                "id": "string",
+                "content": "string",
+                "background_color": "string"
+            }
+        ]
+    }
+
+  }
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapShort - Đánh giá Toán học</title>
+    <style>
+        /* --- Reset & Thiết lập Cơ bản --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f7ff; /* Nền tím rất nhạt */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* --- Card Chung (Container cho các trang) --- */
+        .card-container {
+            background-color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 650px; /* Tăng max-width để chứa giao diện câu hỏi */
+            text-align: center;
+        }
+        
+        .page {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PAGE 1: START PAGE --- */
+        .logo {
+            /* width: 80px;
+            height: 80px;
+            border-radius: 50%; */
+            /* background: linear-gradient(135deg, #ee9ae5 0%, #5961f9 100%); */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            /* box-shadow: 0 8px 20px rgba(184, 123, 241, 0.4); */
+            margin-bottom: 1rem;
+        }
+        .logo svg { width: 44px; height: 44px; color: white; }
+        .card-title { font-size: 1.75rem; font-weight: 700; color: #1f2937; }
+        .card-subtitle { font-size: 1.3rem; color: #1751c6; margin-top: 0.5rem; max-width: 400px; margin-left: auto; margin-right: auto; font-weight: 600; }
+        .axis-list { display: flex; flex-direction: column; gap: 1rem; margin: 2.5rem 0; }
+        .axis-item { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; border-radius: 16px; text-align: left; }
+        .axis-item.blue { background-color: #eff6ff; } .axis-item.green { background-color: #f0fdf4; } .axis-item.purple { background-color: #faf5ff; } .axis-item.orange { background-color: #fffbeb; }
+        .axis-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border-width: 2px; border-style: solid; }
+        .axis-icon svg { width: 24px; height: 24px; }
+        .axis-icon.blue { border-color: #60a5fa; color: #2563eb; } .axis-icon.green { border-color: #4ade80; color: #16a34a; } .axis-icon.purple { border-color: #c084fc; color: #9333ea; } .axis-icon.orange { border-color: #fbbf24; color: #d97706; }
+        .axis-title { font-size: 1.1rem; font-weight: 600; color: #111827; }
+        .axis-description { font-size: 0.9rem; color: #4b5563; margin-top: 0.1rem; line-height: 1.5; }
+        .footer-note { font-size: 0.9rem; color: #6b7280; margin-bottom: 1.5rem; }
+        .start-button { display: inline-block; width: 100%; padding: 1rem; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; color: #ffffff; cursor: pointer; background: linear-gradient(135deg, #f472b6, #a855f7); box-shadow: 0 6px 15px rgba(192, 132, 252, 0.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .start-button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(192, 132, 252, 0.5); }
+
+        /* --- PAGE 2: INFO FORM --- */
+        .info-form-header .card-title { color: #d946ef; }
+        .info-form { margin-top: 2rem; text-align: left; }
+        .input-group { margin-bottom: 1.5rem; }
+        .input-group label { display: block; font-size: 1rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem; }
+        .input-group input[type="text"], .input-group input[type="number"] { width: 100%; padding: 0.85rem 1rem; border: 1px solid #e5e7eb; background-color: #f9fafb; border-radius: 8px; font-size: 1rem; }
+        .input-group input:focus { outline: none; border-color: #a855f7; box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2); }
+        .gender-group { display: flex; gap: 1rem; }
+        .gender-group label { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; }
+        .gender-group input[type="radio"] { accent-color: #a855f7; }
+        .form-navigation { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;}
+        .nav-button {min-width: 150px; margin: 5px; flex: 1; padding: 1rem; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .btn-secondary { background-color: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+        .btn-secondary:hover { background-color: #e5e7eb; }
+        .btn-primary { background: linear-gradient(135deg, #f472b6, #a855f7); color: white; box-shadow: 0 6px 15px rgba(192, 132, 252, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(192, 132, 252, 0.5); }
+
+
+        /* --- PAGE 3: QUIZ --- */
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; color: #555; font-weight: 500; }
+        .progress-bar { width: 100%; background-color: #e9ecef; border-radius: 10px; height: 12px; overflow: hidden; }
+        .progress-fill { width: 0%; height: 100%; background: linear-gradient(135deg, #f472b6, #a855f7); border-radius: 10px; transition: width 0.4s ease; }
+        .quiz-body { margin-top: 2rem; text-align: left;}
+        .section-tag { display: inline-block; background-color: #e7f3ff; color: #007bff; padding: 0.5rem 1rem; border-radius: 20px; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+        #question-text { font-size: 1.25rem; font-weight: 600; color: #222; margin: 1rem 0 2rem 0; }
+        .answer-options { display: flex; flex-direction: column; gap: 1rem; }
+        .answer-options input[type="radio"] { display: none; }
+        .answer-option { display: block; padding: 1.25rem; border: 2px solid #e9ecef; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; color: #333; }
+        .answer-option:hover { border-color: #F4B3D4; background-color: #FDF2F8; }
+        .answer-options input[type="radio"]:checked + .answer-option { border-color: #ED64A6; background-color: #FCE7F3; box-shadow: 0 0 0 3px rgba(237, 100, 166, 0.2); font-weight: 600; color: #BF2A80; }
+        .quiz-footer { display: flex; flex-wrap: wrap;justify-content: space-between; align-items: center; margin-top: 2.5rem; border-top: 1px solid #f0f0f0; padding-top: 1.5rem; }
+        .btn-quiz-prev { background-color: transparent; color: #555; border: 2px solid #e0e0e0; }
+        .btn-quiz-prev:hover { background-color: #f8f9fa; border-color: #ccc; }
+        .btn-quiz-prev:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-quiz-next { background: linear-gradient(135deg, #f472b6, #a855f7); color: white; }
+
+        /* --- Responsive cho Mobile --- */
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .card-container { padding: 1.5rem; }
+            .axis-item { padding: 1rem; gap: 1rem; }
+            .card-title { font-size: 1.5rem; }
+            .card-subtitle, .footer-note, .axis-description { font-size: 0.85rem; }
+            .card-subtitle { font-size: 1.25rem; }
+        }
+        .input-group input[type="date"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #111827;
+    box-shadow: none;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.06s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* icon lịch (SVG inline) */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23737481'><path d='M7 10h5v5H7z' opacity='.0'/><path d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V9h14v9z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+/* Hover / focus */
+.input-group input[type="date"]:hover {
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+}
+.input-group input[type="date"]:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 6px 18px rgba(168,85,247,0.12);
+}
+
+/* Nếu muốn hiển thị placeholder text (một số trình duyệt không cho type=date) */
+.input-group input[type="date"]::-webkit-input-placeholder { color: #9ca3af; }
+.input-group input[type="date"]::-moz-placeholder { color: #9ca3af; opacity: 1; }
+
+/* Responsive: giảm padding trên mobile */
+@media (max-width: 640px) {
+    .input-group input[type="date"] {
+        padding: 0.7rem 0.9rem;
+        background-position: right 10px center;
+    }
+}
+ .site-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .site-logo img {
+            width: 120px;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            /* box-shadow: 0 8px 20px rgba(0,0,0,0.08); */
+        }
+@media (max-width: 468px) {
+  .axis-description {
+    display: none;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        
+        <!-- ======================= PAGE 1: START ======================= -->
+        <div id="page-start" class="page">
+            <header class="card-header">
+                <div class="logo">
+                    <img style="width: 100px;" src="../public/Logo.webp" alt="">
+                    <!-- <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm-4.5 3c.83 0 1.5-.67 1.5-1.5S8.33 11 7.5 11 6 11.67 6 12.5s.67 1.5 1.5 1.5zm9 0c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM12 16c-1.85 0-3.45-1.04-4.13-2.56.2-.35.43-.68.7-1 .3-.35.65-.65 1-.9.23-.17.48-.32.74-.45.05-.02.1-.04.15-.06.27-.12.56-.21.86-.27.32-.06.65-.09 1-.09s.68.03 1 .09c.3.06.59.15.86.27.05.02.1.04.15-.06.26.13.5.28.74-.45.35.25.7.55 1 .9.27.32.5.65.7 1C15.45 14.96 13.85 16 12 16z"></path></svg> -->
+                </div>
+                <!-- <h1 class="card-title">SnapShort</h1> -->
+                <p class="card-subtitle">Đánh giá toán học nền tảng và lộ trình học phù hợp cho bé</p>
+            </header>
+            <main class="axis-list">
+                <div class="axis-item blue"><div class="axis-icon blue"><svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 00-1 1v2a1 1 0 001 1h6a1 1 0 001-1V5a1 1 0 00-1-1H7zM6 14a1 1 0 011-1h1a1 1 0 110 2H7a1 1 0 01-1-1zm3 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM6 11a1 1 0 011-1h1a1 1 0 110 2H7a1 1 0 01-1-1zm3 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zm3 2a1 1 0 00-1-1h-1a1 1 0 100 2h1a1 1 0 001-1z" clip-rule="evenodd"></path></svg></div><div class="axis-text"><h2 class="axis-title">Trình độ Toán học Nền tảng</h2><p class="axis-description">Đánh giá khả năng đếm, nhận biết số, hình và các khái niệm toán học cơ bản</p></div></div>
+                <div class="axis-item green"><div class="axis-icon green"><svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 5.05a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zM10 18a1 1 0 011-1v-1a1 1 0 112 0v1a1 1 0 01-1 1H9a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1h-1zm-4.243-2.586a1 1 0 00-1.414-1.414l-.707.707a1 1 0 101.414 1.414l.707-.707zm10.607 0a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM10 6a4 4 0 100 8 4 4 0 000-8z"></path></svg></div><div class="axis-text"><h2 class="axis-title">Thiên hướng Tư duy & Cách tiếp cận</h2><p class="axis-description">Đánh giá cách bé tư duy và giải quyết vấn đề toán học</p></div></div>
+                <div class="axis-item purple"><div class="axis-icon purple"><svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg></div><div class="axis-text"><h2 class="axis-title">Kỹ năng Hỗ trợ Tổng quát</h2><p class="axis-description">Đánh giá các kỹ năng nền tảng giúp bé học toán tốt hơn</p></div></div>
+                <div class="axis-item orange"><div class="axis-icon orange"><svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg></div><div class="axis-text"><h2 class="axis-title">Sở thích, Tâm lý của Mẹ khi dạy con</h2><p class="axis-description">Đánh giá phong cách và tâm lý của mẹ trong việc dạy toán cho bé</p></div></div>
+            </main>
+            <footer class="card-footer">
+                <p class="footer-note">Trả lời các câu hỏi để nhận được đánh giá chi tiết và lộ trình học toán phù hợp cho bé</p>
+                <button class="start-button" onclick="showPage('page-info')">Bắt đầu đánh giá</button>
+            </footer>
+        </div>
+
+        <!-- ======================= PAGE 2: INFO FORM ======================= -->
+        <div id="page-info" class="page" style="display: none;">
+            <header class="card-header info-form-header">
+                
+            <div class="site-logo">
+                    <img src="../public/Chu_IRUKA-01-01.webp" alt="SnapShort logo">
+                </div>
+                <h1 class="card-title">Thông tin về bé</h1>
+                <p class="card-subtitle">Giúp chúng tôi hiểu về bé để đưa ra lộ trình học phù hợp</p>
+            </header>
+            <main class="info-form">
+                <div class="input-group">
+                    <label for="baby-name">Tên của bé :</label>
+                    <input type="text" id="baby-name" placeholder="Ví dụ: Nam, Hoa...">
+                </div>
+                <div class="input-group">
+                    <label for="baby-age">Tuổi của bé:</label>
+                    <input type="date" id="baby-age" placeholder="Ví dụ: 5">
+                </div>
+                <div class="input-group">
+                    <label>Giới tính</label>
+                    <div class="gender-group">
+                        <label><input type="radio" name="gender" value="male" checked> Nam</label>
+                        <label><input type="radio" name="gender" value="female"> Nữ</label>
+                    </div>
+                </div>
+            </main>
+            <footer class="form-navigation">
+                <button class="nav-button btn-secondary" onclick="showPage('page-start')">Quay lại</button>
+                <button class="nav-button btn-primary" onclick="showPage('page-quiz')">Tiếp tục</button>
+            </footer>
+        </div>
+
+        <!-- ======================= PAGE 3: QUIZ ======================= -->
+        <div id="page-quiz" class="page" style="display: none;">
+            
+<div class="" style="display: flex; justify-content: center; margin-bottom: 5px;">
+        <img src="../public/Chu_IRUKA-01-01.webp" style="width: 80px;" alt="SnapShort logo">
+    </div>
+            <header class="quiz-header">
+                <span id="question-counter">Câu hỏi 1 / 20</span>
+                <span id="progress-percent">0%</span>
+            </header>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <main class="quiz-body">
+                <div class="section-tag" id="section-tag">Phần 1: Trình độ Toán học Nền tảng</div>
+                <p id="section-description">Đánh giá khả năng toán học cơ bản của bé</p>
+                <h3 id="question-text">Bé có thể đếm từ 1 đến 10 chính xác không?</h3>
+                <div class="answer-options" id="answer-options"></div>
+            </main>
+            <footer class="quiz-footer">
+                <button class="nav-button btn-quiz-prev" id="prev-btn" onclick="prevQuestion()">Quay lại</button>
+                <button class="nav-button btn-quiz-next" id="next-btn" onclick="nextQuestion()">Tiếp theo</button>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- --- JavaScript xử lý Logic --- -->
+    <script>
+        // --- DATA ---
+        const allQuestions = [
+            { part: "Phần 1: Trình độ Toán học Nền tảng", description: "Đánh giá khả năng toán học cơ bản của bé.", question: "Bé có thể đếm từ 1 đến 10 chính xác không?", options: [{ text: "Chưa đếm được hoặc đếm dưới 5", value: 0 }, { text: "Đếm được 1-10 nhưng còn nhầm lẫn", value: 5 }, { text: "Đếm thành thạo 1-10 và hơn", value: 10 }] },
+            { part: "Phần 1: Trình độ Toán học Nền tảng", description: "Đánh giá khả năng toán học cơ bản của bé.", question: "Bé có thích chơi trò thả khối hình vào đúng lỗ (tròn, vuông) không?", options: [{ text: "Bé không hứng thú hoặc chưa làm được", value: 0 }, { text: "Bé làm được với sự trợ giúp", value: 5 }, { text: "Bé tự làm được một cách chính xác", value: 10 }] },
+            { part: "Phần 2: Thiên hướng tư duy và cách tiếp cận", description: "Tìm hiểu cách bé tư duy và giải quyết vấn đề.", question: "Khi gặp đồ chơi mới, bé thường có xu hướng gì?", options: [{ text: "Quan sát một lúc rồi mới chạm vào", value: "observe" }, { text: "Chơi thử ngay lập tức, rất hào hứng", value: "immediate" }, { text: "Cần mẹ chơi cùng hoặc hướng dẫn", value: "guided" }] }
+            // Thêm các câu hỏi khác vào đây
+        ];
+        const totalQuestions = 20; // Sửa số này thành tổng số câu hỏi thực tế
+
+        // --- DOM Elements ---
+        const pages = document.querySelectorAll('.page');
+        const questionCounter = document.getElementById('question-counter');
+        const progressPercent = document.getElementById('progress-percent');
+        const progressFill = document.getElementById('progress-fill');
+        const sectionTag = document.getElementById('section-tag');
+        const sectionDescription = document.getElementById('section-description');
+        const questionText = document.getElementById('question-text');
+        const answerOptions = document.getElementById('answer-options');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // --- STATE ---
+        let currentQuestionIndex = 0;
+        const userAnswers = {};
+
+        // --- PAGE NAVIGATION ---
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.style.display = page.id === pageId ? 'block' : 'none';
+            });
+            if (pageId === 'page-quiz') {
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        // --- QUIZ LOGIC ---
+        function loadQuestion(qIndex) {
+            const questionData = allQuestions[qIndex] || allQuestions[0];
+            const questionNumber = qIndex + 1;
+            const percent = Math.round((qIndex / totalQuestions) * 100);
+
+            questionCounter.textContent = `Câu hỏi ${questionNumber} / ${totalQuestions}`;
+            progressPercent.textContent = `${percent}%`;
+            progressFill.style.width = `${percent}%`;
+            sectionTag.textContent = questionData.part;
+            sectionDescription.textContent = questionData.description;
+            questionText.textContent = questionData.question;
+
+            answerOptions.innerHTML = '';
+            questionData.options.forEach((option, index) => {
+                const optionId = `q${qIndex}_option${index}`;
+                const isChecked = userAnswers[qIndex] === option.value.toString();
+                answerOptions.innerHTML += `<div><input type="radio" name="question${qIndex}" id="${optionId}" value="${option.value}" ${isChecked ? 'checked' : ''}><label for="${optionId}" class="answer-option">${option.text}</label></div>`;
+            });
+
+            // Nút Quay lại sẽ không bị vô hiệu hóa nữa
+            // prevBtn.disabled = qIndex === 0; 
+            
+            nextBtn.textContent = (qIndex === totalQuestions - 1) ? 'Hoàn thành' : 'Tiếp theo';
+        }
+
+        function saveAnswer() {
+            const selectedRadio = document.querySelector(`input[name="question${currentQuestionIndex}"]:checked`);
+            if (selectedRadio) {
+                userAnswers[currentQuestionIndex] = selectedRadio.value;
+                return true;
+            }
+            return false;
+        }
+
+        function nextQuestion() {
+            if (!saveAnswer()) {
+                alert('Vui lòng chọn một câu trả lời.');
+                return;
+            }
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert('Hoàn thành khảo sát!');
+                console.log('Kết quả:', userAnswers);
+                // Chuyển đến trang kết quả
+            }
+        }
+
+        function prevQuestion() {
+            // Lưu câu trả lời hiện tại trước khi quay lại (nếu có)
+            saveAnswer(); 
+
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                // Nếu đang ở câu hỏi đầu tiên, quay lại trang thông tin
+                showPage('page-info');
+            }
+        }
+
+    </script>
+</body>
+</html>
+

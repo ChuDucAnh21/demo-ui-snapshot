@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chọn môn học</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f9f6ff;
+  color: #333;
+}
+
+.container {
+  max-width: 950px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.info p {
+  font-weight: 600;
+  font-size: 16px;
+}
+.info span {
+  font-size: 14px;
+  color: #777;
+}
+
+.logo {
+  width: 60px;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.subtitle {
+  color: #666;
+  margin: 5px 0 25px;
+  font-size: 14px;
+}
+
+.subjects {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.subject-card {
+  width: 400px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.subject-card.active {
+  border-color: #4c6ef5;
+  box-shadow: 0 8px 24px rgba(76,110,245,0.2);
+}
+
+.icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4c6ef5, #8a63f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  color: white;
+  font-size: 28px;
+}
+
+.icon-box.pink {
+  background: linear-gradient(135deg, #f85b91, #f76cdd);
+}
+
+.subject-card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.subject-card p {
+  font-size: 14px;
+  color: #666;
+  min-height: 40px;
+  margin-bottom: 15px;
+}
+
+.subject-card ul {
+  list-style: none;
+  text-align: left;
+  font-size: 14px;
+  color: #444;
+  margin: 10px 0 15px;
+}
+
+.subject-card ul li {
+  margin: 6px 0;
+}
+
+.subject-card ul i {
+  color: #4c6ef5;
+  margin-right: 8px;
+}
+
+.time, .soon {
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  border: none;
+  cursor: default;
+}
+
+.time {
+  background: #edf3ff;
+  color: #4c6ef5;
+}
+
+.soon {
+  background: #ffe5ef;
+  color: #f85b91;
+}
+
+.action {
+  margin-top: 35px;
+}
+
+.start {
+  background: linear-gradient(135deg, #f85b91, #4c6ef5);
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start:hover {
+  opacity: 0.9;
+}
+
+.action p {
+  color: #777;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* 🌟 Responsive: chỉ hiện icon + tên môn */
+@media (max-width: 300px) {
+  .subject-card p,
+  .subject-card ul,
+  .time,
+  .soon,
+  .subtitle,
+  .action p {
+    display: none;
+  }
+
+  .subject-card {
+    width: 160px;
+    padding: 20px 10px;
+  }
+
+  .subject-card h3 {
+    font-size: 16px;
+  }
+
+  .subjects {
+    gap: 15px;
+  }
+
+  .start {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="profile">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="icon">
+        <div class="info">
+          <p>Chu Công Đức Anh</p>
+          <span>3-4 tuổi</span>
+        </div>
+      </div>
+      <img class="logo" src="../public/Logo.webp" alt="logo">
+    </header>
+
+    <h2 style="color: #4c6ef5;">Chọn môn học cho bé</h2>
+    <p class="subtitle">Mỗi môn học sẽ có bộ câu hỏi và lộ trình riêng phù hợp với bé</p>
+
+    <div style="padding-left: 10px; padding-right: 10px;" class="subjects">
+      <div class="subject-card active">
+        <div class="icon-box">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h3>Toán học</h3>
+        <p>Đánh giá khả năng toán học nền tảng, tư duy logic và kỹ năng giải quyết vấn đề</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Đánh giá 4 trục năng lực toán học</li>
+          <li><i class="fas fa-check-circle"></i> 20 câu hỏi được thiết kế khoa học</li>
+          <li><i class="fas fa-check-circle"></i> Lộ trình học toán cá nhân hóa</li>
+        </ul>
+        <button class="time">~10 phút</button>
+      </div>
+
+      <div class="subject-card">
+        <div class="icon-box pink">
+          <i class="fas fa-book"></i>
+        </div>
+        <h3>Tiếng Việt</h3>
+        <p>Đánh giá khả năng ngôn ngữ, đọc hiểu và kỹ năng giao tiếp bằng tiếng Việt</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Đánh giá vốn từ vựng và ngữ pháp</li>
+          <li><i class="fas fa-check-circle"></i> Khả năng đọc hiểu và kể chuyện</li>
+          <li><i class="fas fa-check-circle"></i> Lộ trình học ngôn ngữ phù hợp</li>
+        </ul>
+        <button class="soon">Sắp ra mắt</button>
+      </div>
+    </div>
+
+    <div class="action">
+      <button class="start">Bắt đầu đánh giá <i class="fas fa-arrow-right"></i></button>
+      <p>Trả lời các câu hỏi để nhận kết quả chi tiết</p>
+    </div>
+  </div>
+</body>
+</html>
